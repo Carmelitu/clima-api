@@ -49,18 +49,45 @@ function mostrarError(mensaje){
 
 function consultarAPI(ciudad, pais){
 
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${ciudad},${pais}&appid=${API_KEY}`;
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${ciudad},${pais}&units=metric&appid=${API_KEY}`;
 
     fetch(url)
         .then(respuesta => respuesta.json())
         .then(datos => {
-            console.log(datos);
+            limpiarHTML();
             if (datos.cod === '404'){
                 mostrarError('Ciudad no encontrada');
             }
+
+            // Mostar en HTML
+            mostrarClima(datos);
+
         })
 }
 
+function mostrarClima(datos){
+    const {main: {temp, temp_max, temp_min} } = datos;
+
+    // Dato viene en Kelvin por ende hay que restar 273.15
+
+ 
+    const actual = document.createElement('p');
+    actual.innerHTML = `${parseInt(temp)} &#8451;`
+    actual.classList.add('font-bold', 'text-6xl');
+
+    const resultadoDiv = document.createElement('div');
+    resultadoDiv.classList.add('text-center', 'text-white');
+    resultadoDiv.appendChild(actual);
+
+    resultado.appendChild(resultadoDiv);
+    
 
 
+}
+
+function limpiarHTML(){
+    while(resultado.firstChild){
+        resultado.removeChild(resultado.firstChild);
+    }
+}
 
