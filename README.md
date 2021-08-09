@@ -1,6 +1,6 @@
 # Clima - Weather
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/ee1dca03-879a-482a-9b5d-7f49625af626/deploy-status)](https://app.netlify.com/sites/clima-api-carmelitu/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/aec7227e-bf07-4c30-9fe3-bfc289ab1b53/deploy-status)](https://app.netlify.com/sites/clima-api-carmelitu/deploys)
 
 Check it out here: https://clima-api-carmelitu.netlify.app/
 
