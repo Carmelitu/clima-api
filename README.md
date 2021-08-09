@@ -6,8 +6,6 @@ Check it out here: https://clima-api-carmelitu.netlify.app/
 
 Project made for a JavaScript course on Udemy. HTML and CSS are delivered already finalized by the teacher.
 
-- In progress...
-
 ## Builded with 🛠️
 
 * JavaScript
