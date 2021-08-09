@@ -75,7 +75,8 @@ function consultarAPI(ciudad, pais){
 
 // Actualiza HTML para mostrar lo buscado
 function mostrarClima(datos){
-    const {name, main: {temp, temp_max, temp_min} } = datos;
+    console.log(datos);
+    const {name, main: {temp, temp_max, temp_min, humidity} } = datos;
 
     // Creacion de HTML para cada dato
 
@@ -86,6 +87,10 @@ function mostrarClima(datos){
     const actual = document.createElement('p');
     actual.innerHTML = `${parseInt(temp)} &#8451;`
     actual.classList.add('font-bold', 'text-6xl');
+
+    const humedad = document.createElement('p');
+    humedad.innerHTML = `Humedad: ${parseInt(humidity)} %`
+    humedad.classList.add('text-xl');
 
     const tempMax = document.createElement('p');
     tempMax.innerHTML = `Max: ${parseInt(temp_max)} &#8451;`
@@ -101,7 +106,8 @@ function mostrarClima(datos){
     // Se suman al HTML
     
     resultadoDiv.appendChild(nombreCiudad);
-    resultadoDiv.appendChild(actual);    
+    resultadoDiv.appendChild(actual);   
+    resultadoDiv.appendChild(humedad); 
     resultadoDiv.appendChild(tempMax);
     resultadoDiv.appendChild(tempMin);
 
