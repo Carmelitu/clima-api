@@ -1,5 +1,7 @@
+// API KEY
 import API_KEY from "./keys.js";
 
+// Variables
 const container = document.querySelector('.container');
 const resultado = document.querySelector('#resultado');
 const formulario = document.querySelector('#formulario');
@@ -8,6 +10,7 @@ window.addEventListener('load', () => {
     formulario.addEventListener('submit', buscarClima);
 });
 
+// Funcion principal
 function buscarClima(e){
     e.preventDefault();
 
@@ -27,6 +30,7 @@ function buscarClima(e){
 
 }
 
+// Muestra error en pantalla
 function mostrarError(mensaje){
     const alerta = document.querySelector('.bg-red-100');
 
@@ -47,6 +51,8 @@ function mostrarError(mensaje){
     
 }
 
+
+// Conecta con API
 function consultarAPI(ciudad, pais){
 
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${ciudad},${pais}&units=metric&appid=${API_KEY}`;
@@ -67,6 +73,7 @@ function consultarAPI(ciudad, pais){
         })
 }
 
+// Actualiza HTML para mostrar lo buscado
 function mostrarClima(datos){
     const {name, main: {temp, temp_max, temp_min} } = datos;
 
@@ -101,15 +108,18 @@ function mostrarClima(datos){
     resultado.appendChild(resultadoDiv);   
 }
 
+// Limpia HTML
 function limpiarHTML(){
     while(resultado.firstChild){
         resultado.removeChild(resultado.firstChild);
     }
 }
 
+
+// Spinner de carga
 function Spinner(){
     limpiarHTML();
-    
+
     const divSpinner = document.createElement('div');
     divSpinner.classList.add('sk-fading-circle');
 
