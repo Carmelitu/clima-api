@@ -66,23 +66,37 @@ function consultarAPI(ciudad, pais){
 }
 
 function mostrarClima(datos){
-    const {main: {temp, temp_max, temp_min} } = datos;
+    const {name, main: {temp, temp_max, temp_min} } = datos;
 
-    // Dato viene en Kelvin por ende hay que restar 273.15
+    // Creacion de HTML para cada dato
 
- 
+    const nombreCiudad = document.createElement('p');
+    nombreCiudad.textContent = `Clima en ${name}`;
+    nombreCiudad.classList.add('font-bold', 'text-2xl');
+
     const actual = document.createElement('p');
     actual.innerHTML = `${parseInt(temp)} &#8451;`
     actual.classList.add('font-bold', 'text-6xl');
 
+    const tempMax = document.createElement('p');
+    tempMax.innerHTML = `Max: ${parseInt(temp_max)} &#8451;`
+    tempMax.classList.add('text-xl');
+
+    const tempMin = document.createElement('p');
+    tempMin.innerHTML = `Min: ${parseInt(temp_min)} &#8451;`
+    tempMin.classList.add('text-xl');
+
     const resultadoDiv = document.createElement('div');
     resultadoDiv.classList.add('text-center', 'text-white');
-    resultadoDiv.appendChild(actual);
 
-    resultado.appendChild(resultadoDiv);
+    // Se suman al HTML
     
+    resultadoDiv.appendChild(nombreCiudad);
+    resultadoDiv.appendChild(actual);    
+    resultadoDiv.appendChild(tempMax);
+    resultadoDiv.appendChild(tempMin);
 
-
+    resultado.appendChild(resultadoDiv);   
 }
 
 function limpiarHTML(){
